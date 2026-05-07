@@ -45,5 +45,17 @@ public class AuthorController {
         //trả về 200 OK nếu ok
         return ResponseEntity.ok(updateAuthor);
     }
+    //bt5: xóa  tác giả
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAuthor(@PathVariable Integer id){
+        String result = as.deleteAuthor(id);
+        if (result.equals("NOT_FOUND")){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Không tìm thấy id: "+ id);
+        }
+        if (result.equals("ADMIN")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Chức năng xóa chỉ dành cho admin");
+        }
+        return ResponseEntity.ok("Xóa thành công id: " + id);
+    }
     }
 

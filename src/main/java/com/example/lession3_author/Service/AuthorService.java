@@ -34,8 +34,21 @@ public class AuthorService {
         }
         // nếu k có trả về null
         return  null;
-
-
+    }
+    //bt5: xóa tác giả
+    public String deleteAuthor(Integer id){
+       Author author = getAuthorById(id);
+       //TH k có id
+        if (author == null){
+            return "NOT_FOUND";
+        }
+        //TH ràng buộc admin
+        if (author.getName().trim().equalsIgnoreCase("ADMIN")){
+            return "ADMIN";
+        }
+        // TH xóa ok
+        ar.deleteById(id);
+        return "OK";
     }
 
 }
