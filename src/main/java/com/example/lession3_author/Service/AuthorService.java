@@ -24,5 +24,18 @@ public class AuthorService {
     public Author getAuthorById(Integer id){
        return ar.findById(id);
     }
+    //bt4: cập nhật thông tin tác giả + sử dụng lại findById
+    public Author updateAuthor(Integer id, Author request){
+        Author existingAuthor = getAuthorById(id);
+        if (existingAuthor != null){
+            existingAuthor.setName(request.getName());  // cập nhật lại tên
+            existingAuthor.setEmail(request.getEmail());  // cập nhật lại email
+            return  existingAuthor;
+        }
+        // nếu k có trả về null
+        return  null;
+
+
+    }
 
 }

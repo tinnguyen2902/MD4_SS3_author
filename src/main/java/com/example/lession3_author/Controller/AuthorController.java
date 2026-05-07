@@ -35,5 +35,15 @@ public class AuthorController {
         }
         return ResponseEntity.ok(author);
     }
+    //bt4: cập nhật thông tin tác giả
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateAuthor(@PathVariable("id") Integer id, @RequestBody Author request){
+        Author updateAuthor = as.updateAuthor(id, request);
+        if (updateAuthor == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Không tìm thấy tác giả với id: " + id);
+        }
+        //trả về 200 OK nếu ok
+        return ResponseEntity.ok(updateAuthor);
+    }
     }
 
