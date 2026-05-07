@@ -24,4 +24,12 @@ public class AuthorRepository {
     public void save(Author author){
         authors.add(author);
     }
+    //bt3: tìm kiếm theo id
+    public Author findById(Integer id){
+        for (Author author : authors) {
+            if(author.getId().equals(id)){
+                return author;
+            }
+        } return null;
+    }
 }

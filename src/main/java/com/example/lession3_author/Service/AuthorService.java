@@ -20,5 +20,9 @@ public class AuthorService {
         ar.save(author);
         return author;
     }
+    //bt3 : tìm kiếm theo id
+    public Author getAuthorById(Integer id){
+       return ar.findById(id);
+    }
 
 }
