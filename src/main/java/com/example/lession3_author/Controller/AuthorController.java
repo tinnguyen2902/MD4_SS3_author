@@ -57,5 +57,11 @@ public class AuthorController {
         }
         return ResponseEntity.ok("Xóa thành công id: " + id);
     }
+    //bt6: tìm kiếm theo tên
+    @GetMapping("/search")
+    public ResponseEntity<List<Author>> searchAuthor(@RequestParam("name") String keyword){
+      List<Author> result = as.searchAuthor(keyword);
+      return ResponseEntity.ok(result);
+    }
     }
 
